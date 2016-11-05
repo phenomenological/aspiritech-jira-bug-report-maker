@@ -58,8 +58,8 @@
             this.txtTestMachineNames = new System.Windows.Forms.TextBox();
             this.label15 = new System.Windows.Forms.Label();
             this.txtWorkaround = new System.Windows.Forms.TextBox();
-            this.txtOtherNotesOrComments = new System.Windows.Forms.Label();
-            this.textBox16 = new System.Windows.Forms.TextBox();
+            this.label16 = new System.Windows.Forms.Label();
+            this.txtOtherNotesOrComments = new System.Windows.Forms.TextBox();
             this.btnCreateReport = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
@@ -329,24 +329,24 @@
             this.txtWorkaround.Size = new System.Drawing.Size(313, 39);
             this.txtWorkaround.TabIndex = 30;
             // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(15, 692);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(129, 13);
+            this.label16.TabIndex = 31;
+            this.label16.Text = "Other Notes / \'Comments:";
+            // 
             // txtOtherNotesOrComments
             // 
-            this.txtOtherNotesOrComments.AutoSize = true;
-            this.txtOtherNotesOrComments.Location = new System.Drawing.Point(15, 692);
+            this.txtOtherNotesOrComments.AcceptsReturn = true;
+            this.txtOtherNotesOrComments.AllowDrop = true;
+            this.txtOtherNotesOrComments.Location = new System.Drawing.Point(149, 689);
+            this.txtOtherNotesOrComments.Multiline = true;
             this.txtOtherNotesOrComments.Name = "txtOtherNotesOrComments";
-            this.txtOtherNotesOrComments.Size = new System.Drawing.Size(129, 13);
-            this.txtOtherNotesOrComments.TabIndex = 31;
-            this.txtOtherNotesOrComments.Text = "Other Notes / \'Comments:";
-            // 
-            // textBox16
-            // 
-            this.textBox16.AcceptsReturn = true;
-            this.textBox16.AllowDrop = true;
-            this.textBox16.Location = new System.Drawing.Point(149, 689);
-            this.textBox16.Multiline = true;
-            this.textBox16.Name = "textBox16";
-            this.textBox16.Size = new System.Drawing.Size(313, 39);
-            this.textBox16.TabIndex = 32;
+            this.txtOtherNotesOrComments.Size = new System.Drawing.Size(313, 39);
+            this.txtOtherNotesOrComments.TabIndex = 32;
             // 
             // btnCreateReport
             // 
@@ -365,8 +365,8 @@
             this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(487, 783);
             this.Controls.Add(this.btnCreateReport);
-            this.Controls.Add(this.textBox16);
             this.Controls.Add(this.txtOtherNotesOrComments);
+            this.Controls.Add(this.label16);
             this.Controls.Add(this.txtWorkaround);
             this.Controls.Add(this.label15);
             this.Controls.Add(this.txtTestMachineNames);
@@ -436,8 +436,8 @@
         private System.Windows.Forms.TextBox txtTestMachineNames;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.TextBox txtWorkaround;
-        private System.Windows.Forms.Label txtOtherNotesOrComments;
-        private System.Windows.Forms.TextBox textBox16;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.TextBox txtOtherNotesOrComments;
         private System.Windows.Forms.Button btnCreateReport;
     }
 }
