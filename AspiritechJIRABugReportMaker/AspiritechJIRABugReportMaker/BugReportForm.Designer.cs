@@ -40,6 +40,7 @@
             this.txtBugReport.Location = new System.Drawing.Point(13, 53);
             this.txtBugReport.Multiline = true;
             this.txtBugReport.Name = "txtBugReport";
+            this.txtBugReport.ReadOnly = true;
             this.txtBugReport.Size = new System.Drawing.Size(493, 477);
             this.txtBugReport.TabIndex = 0;
             // 
