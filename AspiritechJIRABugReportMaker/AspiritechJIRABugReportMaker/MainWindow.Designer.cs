@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainWindow));
             this.label1 = new System.Windows.Forms.Label();
             this.txtSummary = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -363,7 +364,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(487, 783);
+            this.ClientSize = new System.Drawing.Size(487, 601);
             this.Controls.Add(this.btnCreateReport);
             this.Controls.Add(this.txtOtherNotesOrComments);
             this.Controls.Add(this.label16);
@@ -397,6 +398,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.txtSummary);
             this.Controls.Add(this.label1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "MainWindow";
             this.Text = "Aspiritech JIRA Bug Report Maker";
             this.ResumeLayout(false);

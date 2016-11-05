@@ -37,6 +37,7 @@ namespace AspiritechJIRABugReportMaker
             bugReportInstance.BringToFront();
         }
 
+        // Fill in the Bug Report window with the text entered in the Main Window.
         private void populateBugReport()
         {
             bugReportInstance.bugReportText =
