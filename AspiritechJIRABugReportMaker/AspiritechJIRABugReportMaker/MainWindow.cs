@@ -52,7 +52,7 @@ namespace AspiritechJIRABugReportMaker
                 + "*Times Repeatable:* \r\n" + txtTimesRepeatableNumerator.Text + " / " + txtTimesRepeatableDenominator.Text + " Times\r\n"
                 + "*Test Machine Name(s):* \r\n" + txtTestMachineNames.Text + "\r\n"
                 + "*Workaround:* \r\n" + txtWorkaround.Text + "\r\n"
-                + "*Other Notes/Comments*: \r\n" + label16.Text
+                + "*Other Notes/Comments*: \r\n" + txtOtherNotesOrComments.Text
                 ;
         }
     }
