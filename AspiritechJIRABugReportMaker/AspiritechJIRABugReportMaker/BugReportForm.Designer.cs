@@ -31,6 +31,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(BugReportForm));
             this.txtBugReport = new System.Windows.Forms.TextBox();
             this.btnCopyToClipboard = new System.Windows.Forms.Button();
+            this.btnSaveAs = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // txtBugReport
@@ -49,17 +50,28 @@
             // 
             this.btnCopyToClipboard.Location = new System.Drawing.Point(13, 13);
             this.btnCopyToClipboard.Name = "btnCopyToClipboard";
-            this.btnCopyToClipboard.Size = new System.Drawing.Size(493, 23);
+            this.btnCopyToClipboard.Size = new System.Drawing.Size(233, 23);
             this.btnCopyToClipboard.TabIndex = 1;
             this.btnCopyToClipboard.Text = "Copy Text to Clipboard";
             this.btnCopyToClipboard.UseVisualStyleBackColor = true;
             this.btnCopyToClipboard.Click += new System.EventHandler(this.btnCopyToClipboard_Click);
+            // 
+            // btnSaveAs
+            // 
+            this.btnSaveAs.Location = new System.Drawing.Point(252, 13);
+            this.btnSaveAs.Name = "btnSaveAs";
+            this.btnSaveAs.Size = new System.Drawing.Size(254, 23);
+            this.btnSaveAs.TabIndex = 2;
+            this.btnSaveAs.Text = "Save As...";
+            this.btnSaveAs.UseVisualStyleBackColor = true;
+            this.btnSaveAs.Click += new System.EventHandler(this.btnSaveAs_Click);
             // 
             // BugReportForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(518, 542);
+            this.Controls.Add(this.btnSaveAs);
             this.Controls.Add(this.btnCopyToClipboard);
             this.Controls.Add(this.txtBugReport);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -75,5 +87,6 @@
 
         private System.Windows.Forms.TextBox txtBugReport;
         private System.Windows.Forms.Button btnCopyToClipboard;
+        private System.Windows.Forms.Button btnSaveAs;
     }
 }

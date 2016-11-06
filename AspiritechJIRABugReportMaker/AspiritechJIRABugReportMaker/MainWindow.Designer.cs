@@ -351,7 +351,7 @@
             // 
             // btnCreateReport
             // 
-            this.btnCreateReport.Location = new System.Drawing.Point(324, 734);
+            this.btnCreateReport.Location = new System.Drawing.Point(324, 730);
             this.btnCreateReport.Name = "btnCreateReport";
             this.btnCreateReport.Size = new System.Drawing.Size(138, 37);
             this.btnCreateReport.TabIndex = 33;
