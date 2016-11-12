@@ -4,7 +4,8 @@ included it in the repository to show what the
 database table looks like.
 */
 CREATE TABLE jira_reports (
-	id INTEGER PRIMARY KEY,
+	--Auto-incrementing Primary Key
+	ID int IDENTITY(1,1) PRIMARY KEY,
 	jira_id TEXT,
 	time_reported DATETIME2,
 	summary TEXT,
