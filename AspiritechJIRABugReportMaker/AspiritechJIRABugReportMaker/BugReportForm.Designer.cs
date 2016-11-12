@@ -32,6 +32,7 @@
             this.txtBugReport = new System.Windows.Forms.TextBox();
             this.btnCopyToClipboard = new System.Windows.Forms.Button();
             this.btnSaveAs = new System.Windows.Forms.Button();
+            this.btnSubmitToDatabase = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // txtBugReport
@@ -39,11 +40,11 @@
             this.txtBugReport.AcceptsReturn = true;
             this.txtBugReport.AcceptsTab = true;
             this.txtBugReport.AllowDrop = true;
-            this.txtBugReport.Location = new System.Drawing.Point(13, 53);
+            this.txtBugReport.Location = new System.Drawing.Point(12, 77);
             this.txtBugReport.Multiline = true;
             this.txtBugReport.Name = "txtBugReport";
             this.txtBugReport.ReadOnly = true;
-            this.txtBugReport.Size = new System.Drawing.Size(493, 477);
+            this.txtBugReport.Size = new System.Drawing.Size(493, 424);
             this.txtBugReport.TabIndex = 0;
             // 
             // btnCopyToClipboard
@@ -66,11 +67,22 @@
             this.btnSaveAs.UseVisualStyleBackColor = true;
             this.btnSaveAs.Click += new System.EventHandler(this.btnSaveAs_Click);
             // 
+            // btnSubmitToDatabase
+            // 
+            this.btnSubmitToDatabase.Location = new System.Drawing.Point(13, 507);
+            this.btnSubmitToDatabase.Name = "btnSubmitToDatabase";
+            this.btnSubmitToDatabase.Size = new System.Drawing.Size(194, 23);
+            this.btnSubmitToDatabase.TabIndex = 3;
+            this.btnSubmitToDatabase.Text = "Submit to Database...";
+            this.btnSubmitToDatabase.UseVisualStyleBackColor = true;
+            this.btnSubmitToDatabase.Click += new System.EventHandler(this.btnSubmitToDatabase_Click);
+            // 
             // BugReportForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(518, 542);
+            this.Controls.Add(this.btnSubmitToDatabase);
             this.Controls.Add(this.btnSaveAs);
             this.Controls.Add(this.btnCopyToClipboard);
             this.Controls.Add(this.txtBugReport);
@@ -88,5 +100,6 @@
         private System.Windows.Forms.TextBox txtBugReport;
         private System.Windows.Forms.Button btnCopyToClipboard;
         private System.Windows.Forms.Button btnSaveAs;
+        private System.Windows.Forms.Button btnSubmitToDatabase;
     }
 }

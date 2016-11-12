@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.IO;
 using System.Linq;
@@ -15,6 +16,24 @@ namespace AspiritechJIRABugReportMaker
     {
         public string bugReportText = "";
 
+        public string jiraID;
+        public string summary;
+        public string reporter;
+        public string testCase, testStep;
+        public string homerGabboVersion;
+        public string deviceVersions;
+        public string internetConnectionType;
+        public string testEnvironment;
+        public string stepsToReproduce;
+        public string expectedResult;
+        public string actualResult;
+        public string timesRepeatableNum, timesRepeatableDen;
+        public string testMachineNames;
+        public string workaround;
+        public string otherNotesOrComments;
+
+        private JiraIDForm jiraIDForm;
+
         public BugReportForm()
         {
             InitializeComponent();
@@ -22,10 +41,31 @@ namespace AspiritechJIRABugReportMaker
 
         private void BugReportForm_Shown(object sender, EventArgs e)
         {
+            populateBugReport();
             // Change the textbox text the the bug report text.
             txtBugReport.Text = bugReportText;
             // Highlight the text to show it's copyable.
             txtBugReport.SelectAll(); 
+        }
+
+        private void populateBugReport()
+        {
+            bugReportText =
+                "Summary: " + summary + "\r\n"
+                + "Reporter: " + reporter + "\r\n\r\n"
+                + "*Test Case/Step:* \r\n" + testCase + "/" + testStep + "\r\n"
+                + "*Homer/Gabbo version:* \r\n" + homerGabboVersion + "\r\n"
+                + "*Device Version:* \r\n" + deviceVersions + "\r\n"
+                + "*Connection:* \r\n" + internetConnectionType + "\r\n"
+                + "*Test Environment:* \r\n" + testEnvironment + "\r\n"
+                + "*Steps to Reproduce:* \r\n" + stepsToReproduce + "\r\n\r\n"
+                + "*Expected Result:* \r\n" + expectedResult + "\r\n"
+                + "*Actual Result:* \r\n" + actualResult + "\r\n\r\n"
+                + "*Times Repeatable:* \r\n" + timesRepeatableNum + " / " + timesRepeatableDen + " Times\r\n"
+                + "*Test Machine Name(s):* \r\n" + testMachineNames + "\r\n"
+                + "*Workaround:* \r\n" + workaround + "\r\n"
+                + "*Other Notes/Comments*: \r\n" + otherNotesOrComments
+                ;
         }
 
         // Copies the bug report contents to the Windows clipboard.
@@ -38,8 +78,8 @@ namespace AspiritechJIRABugReportMaker
         {
             SaveFileDialog saveFileDialog = new SaveFileDialog();
             saveFileDialog.Title = "Save Bug Report";
-            saveFileDialog.DefaultExt = "txt";
-            saveFileDialog.Filter = "txt files (*.txt)|*.txt|All files (*.*)|*.*";
+            saveFileDialog.DefaultExt = "";
+            saveFileDialog.Filter = " files (*.)|*.|All files (*.*)|*.*";
 
             // Open the dialog box to write the bug report text to a file (no blank filenames).
             if (saveFileDialog.ShowDialog() == DialogResult.OK && saveFileDialog.FileName != "")
@@ -47,6 +87,59 @@ namespace AspiritechJIRABugReportMaker
                 using (StreamWriter sw = new StreamWriter(saveFileDialog.FileName))
                     sw.Write(bugReportText);
                 saveFileDialog.Dispose();
+            }
+        }
+
+        private void btnSubmitToDatabase_Click(object sender, EventArgs e)
+        {
+            if (jiraIDForm != null && !jiraIDForm.IsDisposed)
+            {
+                jiraIDForm.Dispose();
+            }
+
+            jiraIDForm = new JiraIDForm();
+
+            jiraIDForm.ShowDialog();
+            // Since the window from the previous line is a dialog we can stop the code here until the window is closed.
+            jiraID = jiraIDForm.jiraID;
+            jiraIDForm.Dispose();
+            submitToSQLServer(); // Everything is ready now to submit to the database.
+        }
+
+        // This is called after the Jira ID Form is submitted.
+        public void submitToSQLServer()
+        {
+            try
+            {
+                SqlConnection con = new SqlConnection();
+                // The connection string values are hard-coded for now.
+                con.ConnectionString = @"Server=ASPIRITECH-PC21\ASPIRITECHSQL; Database=master;";
+                con.Open();
+                SqlCommand command = new SqlCommand("INSERT INTO dbo.jira_reports VALUES ("
+                    + jiraID
+                    + ", NOW(), "
+                    + summary
+                    + ", " + reporter
+                    + ", " + testCase
+                    + ", " + testStep
+                    + ", " + homerGabboVersion
+                    + ", " + deviceVersions
+                    + ", " + internetConnectionType
+                    + ", " + testEnvironment
+                    + ", " + stepsToReproduce
+                    + ", " + expectedResult
+                    + ", " + actualResult
+                    + ", " + timesRepeatableNum
+                    + ", " + timesRepeatableDen
+                    + ", " + testMachineNames
+                    + ", " + workaround
+                    + ", " + otherNotesOrComments
+                    + ")");
+                con.Close();
+            }
+            catch (Exception submitException)
+            {
+                MessageBox.Show(submitException.Message);
             }
         }
     }

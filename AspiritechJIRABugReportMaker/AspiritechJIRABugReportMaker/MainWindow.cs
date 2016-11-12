@@ -33,28 +33,29 @@ namespace AspiritechJIRABugReportMaker
 
             populateBugReport();
 
-            bugReportInstance.Show();
+            bugReportInstance.ShowDialog();
             bugReportInstance.BringToFront();
         }
 
         // Fill in the Bug Report window with the text entered in the Main Window.
         private void populateBugReport()
         {
-            bugReportInstance.bugReportText =
-                "Summary: " + txtSummary.Text + "\r\n"
-                + "Reporter: " + txtReporter.Text + "\r\n\r\n"
-                + "*Test Case/Step:* \r\n" + txtTestCase.Text + "/" + txtTestStep.Text + "\r\n"
-                + "*Homer/Gabbo version:* \r\n" + txtHomerGabboVersion.Text + "\r\n"
-                + "*Connection:* \r\n" + txtInternetConnectionType.Text + "\r\n"
-                + "*Test Environment:* \r\n" + txtTestEnvironment.Text + "\r\n"
-                + "*Steps to Reproduce:* \r\n" + txtStepsToReproduce.Text + "\r\n\r\n"
-                + "*Expected Result:* \r\n" + txtExpectedResult.Text + "\r\n"
-                + "*Actual Result:* \r\n" + txtActualResult.Text + "\r\n\r\n"
-                + "*Times Repeatable:* \r\n" + txtTimesRepeatableNumerator.Text + " / " + txtTimesRepeatableDenominator.Text + " Times\r\n"
-                + "*Test Machine Name(s):* \r\n" + txtTestMachineNames.Text + "\r\n"
-                + "*Workaround:* \r\n" + txtWorkaround.Text + "\r\n"
-                + "*Other Notes/Comments*: \r\n" + txtOtherNotesOrComments.Text
-                ;
+            bugReportInstance.summary = txtSummary.Text;
+            bugReportInstance.reporter = txtReporter.Text;
+            bugReportInstance.testCase = txtTestCase.Text;
+            bugReportInstance.testStep = txtTestStep.Text;
+            bugReportInstance.homerGabboVersion = txtHomerGabboVersion.Text;
+            bugReportInstance.deviceVersions = txtDeviceVersion.Text;
+            bugReportInstance.internetConnectionType = txtInternetConnectionType.Text;
+            bugReportInstance.testEnvironment = txtTestEnvironment.Text;
+            bugReportInstance.stepsToReproduce = txtStepsToReproduce.Text;
+            bugReportInstance.expectedResult = txtExpectedResult.Text;
+            bugReportInstance.actualResult = txtActualResult.Text;
+            bugReportInstance.timesRepeatableNum = txtTimesRepeatableNumerator.Text;
+            bugReportInstance.timesRepeatableDen = txtTimesRepeatableDenominator.Text;
+            bugReportInstance.testMachineNames = txtTestMachineNames.Text;
+            bugReportInstance.workaround = txtWorkaround.Text;
+            bugReportInstance.otherNotesOrComments = txtOtherNotesOrComments.Text;
         }
     }
 }
