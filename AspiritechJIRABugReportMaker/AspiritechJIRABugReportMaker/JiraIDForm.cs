@@ -28,6 +28,7 @@ namespace AspiritechJIRABugReportMaker
             }
             else
             {
+                jiraID = txtJiraID.Text;
                 this.Close();
             }
         }

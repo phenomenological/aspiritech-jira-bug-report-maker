@@ -33,6 +33,7 @@ namespace AspiritechJIRABugReportMaker
         public string otherNotesOrComments;
 
         private JiraIDForm jiraIDForm;
+        private SqlConnection con;
 
         public BugReportForm()
         {
@@ -111,35 +112,54 @@ namespace AspiritechJIRABugReportMaker
         {
             try
             {
-                SqlConnection con = new SqlConnection();
+                con = new SqlConnection();
                 // The connection string values are hard-coded for now.
-                con.ConnectionString = @"Server=ASPIRITECH-PC21\ASPIRITECHSQL; Database=master;";
+                con.ConnectionString = @"Server=ASPIRITECH-PC21; Database=master; User Id=Aspiritech; Password=test1234";
                 con.Open();
-                SqlCommand command = new SqlCommand("INSERT INTO dbo.jira_reports VALUES ("
+                SqlCommand command = new SqlCommand("INSERT INTO dbo.jira_reports VALUES ('"
                     + jiraID
-                    + ", NOW(), "
+                    + "', GETDATE(), '"
                     + summary
-                    + ", " + reporter
-                    + ", " + testCase
-                    + ", " + testStep
-                    + ", " + homerGabboVersion
-                    + ", " + deviceVersions
-                    + ", " + internetConnectionType
-                    + ", " + testEnvironment
-                    + ", " + stepsToReproduce
-                    + ", " + expectedResult
-                    + ", " + actualResult
-                    + ", " + timesRepeatableNum
-                    + ", " + timesRepeatableDen
-                    + ", " + testMachineNames
-                    + ", " + workaround
-                    + ", " + otherNotesOrComments
-                    + ")");
-                con.Close();
+                    + "', '" + reporter
+                    + "', '" + testCase
+                    + "', '" + testStep
+                    + "', '" + homerGabboVersion
+                    + "', '" + deviceVersions
+                    + "', '" + internetConnectionType
+                    + "', '" + testEnvironment
+                    + "', '" + stepsToReproduce
+                    + "', '" + expectedResult
+                    + "', '" + actualResult
+                    + "', '" + timesRepeatableNum
+                    + "', '" + timesRepeatableDen
+                    + "', '" + testMachineNames
+                    + "', '" + workaround
+                    + "', '" + otherNotesOrComments
+                    + "')");
+                command.Connection = con;
+                // Execute the SQL command
+                AsyncCallback callback = new AsyncCallback(HandleCallback);
+                command.BeginExecuteNonQuery(callback, command);
             }
             catch (Exception submitException)
             {
                 MessageBox.Show(submitException.Message);
+            }
+        }
+
+        // Callback method for the asynchronius SQL command.
+        private void HandleCallback(IAsyncResult result)
+        {
+            try
+            {
+                SqlCommand command = (SqlCommand)result.AsyncState;
+                command.EndExecuteNonQuery(result);
+                // We're all done here.  Close the SQL connection.
+                con.Close();
+            }
+            catch (Exception asyncException)
+            {
+                MessageBox.Show(asyncException.Message);
             }
         }
     }
