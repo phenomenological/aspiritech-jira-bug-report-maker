@@ -102,9 +102,12 @@ namespace AspiritechJIRABugReportMaker
 
             jiraIDForm.ShowDialog();
             // Since the window from the previous line is a dialog we can stop the code here until the window is closed.
-            jiraID = jiraIDForm.jiraID;
-            jiraIDForm.Dispose();
-            submitToSQLServer(); // Everything is ready now to submit to the database.
+            if (jiraIDForm.checkIfReadyToSubmit()) // Make sure the user didn't Cancel out of or close the window.
+            {
+                jiraID = jiraIDForm.jiraID;
+                jiraIDForm.Dispose();
+                submitToSQLServer(); // Everything is ready now to submit to the database.
+            }
         }
 
         // This is called after the Jira ID Form is submitted.
@@ -152,10 +155,14 @@ namespace AspiritechJIRABugReportMaker
         {
             try
             {
+                // Create and execute the SQL INSERT command.
                 SqlCommand command = (SqlCommand)result.AsyncState;
                 command.EndExecuteNonQuery(result);
                 // We're all done here.  Close the SQL connection.
                 con.Close();
+                // Let the user know the bug was successfully submitted:
+                System.Media.SystemSounds.Asterisk.Play();
+                MessageBox.Show("Bug entry successful!", "Bug Entry Status");
             }
             catch (Exception asyncException)
             {
