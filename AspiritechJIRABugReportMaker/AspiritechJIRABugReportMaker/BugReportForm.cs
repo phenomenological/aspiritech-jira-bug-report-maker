@@ -53,15 +53,15 @@ namespace AspiritechJIRABugReportMaker
         {
             bugReportText =
                 "Summary: " + summary + "\r\n"
-                + "Reporter: " + reporter + "\r\n\r\n"
+                + "Reporter: " + reporter + "\r\n \r\n"
                 + "*Test Case/Step:* \r\n" + testCase + "/" + testStep + "\r\n"
                 + "*Homer/Gabbo version:* \r\n" + homerGabboVersion + "\r\n"
                 + "*Device Version:* \r\n" + deviceVersions + "\r\n"
                 + "*Connection:* \r\n" + internetConnectionType + "\r\n"
                 + "*Test Environment:* \r\n" + testEnvironment + "\r\n"
-                + "*Steps to Reproduce:* \r\n" + stepsToReproduce + "\r\n\r\n"
+                + "*Steps to Reproduce:* \r\n" + stepsToReproduce + "\r\n \r\n"
                 + "*Expected Result:* \r\n" + expectedResult + "\r\n"
-                + "*Actual Result:* \r\n" + actualResult + "\r\n\r\n"
+                + "*Actual Result:* \r\n" + actualResult + "\r\n \r\n"
                 + "*Times Repeatable:* \r\n" + timesRepeatableNum + " / " + timesRepeatableDen + " Times\r\n"
                 + "*Test Machine Name(s):* \r\n" + testMachineNames + "\r\n"
                 + "*Workaround:* \r\n" + workaround + "\r\n"
