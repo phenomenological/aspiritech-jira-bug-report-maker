@@ -117,7 +117,7 @@ namespace AspiritechJIRABugReportMaker
             {
                 con = new SqlConnection();
                 // The connection string values are hard-coded for now.
-                con.ConnectionString = @"Server=ASPIRITECH-PC21; Database=master; User Id=Aspiritech; Password=test1234";
+                con.ConnectionString = @"Server=ASPIRITECH-PC21; Database=master; User Id=Aspiritech; Password=Shalom@1";
                 con.Open();
                 SqlCommand command = new SqlCommand("INSERT INTO dbo.jira_reports VALUES ('"
                     + jiraID
